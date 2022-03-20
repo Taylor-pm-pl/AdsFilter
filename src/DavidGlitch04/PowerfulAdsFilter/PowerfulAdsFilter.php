@@ -12,16 +12,26 @@ class PowerfulAdsFilter extends PluginBase{
     /** @var Config $config */
     private Config $config;
 
+    /**
+     * @return void
+     */
     protected function onEnable(): void{
         $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
         $this->saveDefaultConfig();
         $this->config = $this->getConfig();
     }
 
+    /**
+     * @return string
+     */
     public function getPrefix(): string{
         return strval($this->config->get("prefix", "&c[&aPowerfulAdsFilter&c] "));
     }
 
+    /**
+     * @param string $ip
+     * @return bool
+     */
     public function isIP(string $ip): bool{
         /**
          * @phpstan-ignore-next-line
@@ -36,6 +46,10 @@ class PowerfulAdsFilter extends PluginBase{
         }
     }
 
+    /**
+     * @param Player $player
+     * @return void
+     */
     public function sendAlert(Player $player): void{
         $prefix = $this->getPrefix();
         $alert = "&cPlease don't send ads on this server!";
@@ -43,6 +57,10 @@ class PowerfulAdsFilter extends PluginBase{
         $player->sendMessage($colorize);
     }
 
+    /**
+     * @param Player $player
+     * @return void
+     */
     public function showAds(Player $player, string $msg): void{
         $search = [
             "%player",
