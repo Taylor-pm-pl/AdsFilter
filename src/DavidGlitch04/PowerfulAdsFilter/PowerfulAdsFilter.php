@@ -71,6 +71,6 @@ class PowerfulAdsFilter extends PluginBase{
             $msg
         ];
         $subject = "%player > %msg";
-        $this->getServer()->getLogger()->info(str_replace($search, $replace, strval($subject)));
+        $this->getLogger()->info(str_replace($search, $replace, strval($subject)));
     }
 }
