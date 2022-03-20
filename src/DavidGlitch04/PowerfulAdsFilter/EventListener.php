@@ -18,11 +18,16 @@ class EventListener implements Listener{
         $this->plugin = $plugin;
     }
 
+    /**
+     * @param PlayerChatEvent $event
+     */
     public function onPlayerChat(PlayerChatEvent $event): void{
         $player = $event->getPlayer();
         $msg = $event->getMessage();
         if(!$player->hasPermission("powerfuladsfiler.bypass")){
             if($this->plugin->isIP($msg)){
+                $this->plugin->sendAlert($player);
+                $this->plugin->showAds($player, $msg);
                 //TODO
             }
         }
