@@ -1,0 +1,15 @@
+name: PowerfulAdsFilter
+version: 1.0.0-alpha
+api: 4.0.0
+main: DavidGlitch04\PowerfulAdsFilter\PowerfulAdsFilter
+website: https://github.com/DavidGlitch04
+load: STARTUP
+author: DavidGlitch04
+description: Powerful Ads Filter Plugin For PocketMine-MP
+extensions:
+  core: ">=8.0"
+
+permissions:
+  powerfuladsfiler.bypass:
+    description: "Allows players to send ads"
+    default: op
