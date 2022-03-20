@@ -6,5 +6,8 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 
 class PowerfulAdsFilter extends PluginBase{
-    //TODO
+
+    protected function onEnable(): void{
+        $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
+    }
 }
