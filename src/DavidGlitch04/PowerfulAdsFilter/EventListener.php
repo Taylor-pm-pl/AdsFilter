@@ -18,7 +18,7 @@ class EventListener implements Listener{
         $this->plugin = $plugin;
     }
 
-    public function onPlayerChat(PlayerChatEvent $event){
+    public function onPlayerChat(PlayerChatEvent $event): void{
         $player = $event->getPlayer();
         //TODO
     }
