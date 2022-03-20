@@ -3,6 +3,7 @@
 namespace DavidGlitch04\PowerfulAdsFilter;
 
 use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerChatEvent;
 
 class EventListener implements Listener{
     /** @var PowerfulAdsFilter $plugin */
@@ -15,5 +16,10 @@ class EventListener implements Listener{
     public function __construct(PowerfulAdsFilter $plugin)
     {
         $this->plugin = $plugin;
+    }
+
+    public function onPlayerChat(PlayerChatEvent $event): void{
+        $player = $event->getPlayer();
+        //TODO
     }
 }
