@@ -20,6 +20,11 @@ class EventListener implements Listener{
 
     public function onPlayerChat(PlayerChatEvent $event): void{
         $player = $event->getPlayer();
-        //TODO
+        $msg = $event->getMessage();
+        if(!$player->hasPermission("powerfuladsfiler.bypass")){
+            if($this->plugin->isIP($msg)){
+                //TODO
+            }
+        }
     }
 }
