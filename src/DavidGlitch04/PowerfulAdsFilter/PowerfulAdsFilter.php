@@ -15,12 +15,11 @@ class PowerfulAdsFilter extends PluginBase{
      * @param string $ip
      * @return bool
      */
-    public function isIP(string $ip): bool{
+    public function isIP($ip): bool{
         if(filter_var($ip, FILTER_VALIDATE_IP)){
-            $value = true;
+            return true;
         } else{
-            $value = false;
+            return false;
         }
-        return $value
     }
 }
