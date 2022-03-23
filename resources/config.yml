@@ -1,1 +1,3 @@
-//TODO
+language: vie
+prefix: "&c[&aPowerfulAdsFilter&c] "
+characterReplaced: "*"

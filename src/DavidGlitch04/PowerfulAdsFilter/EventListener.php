@@ -28,7 +28,8 @@ class EventListener implements Listener{
             if($this->plugin->isIP($msg)){
                 $this->plugin->sendAlert($player);
                 $this->plugin->showAds($player, $msg);
-                //TODO
+                $filteredMsg = $this->plugin->handleMessage($msg);
+                $event->setMessage($filteredMsg);
             }
         }
     }
