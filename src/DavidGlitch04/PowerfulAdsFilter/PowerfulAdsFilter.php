@@ -36,7 +36,7 @@ class PowerfulAdsFilter extends PluginBase{
     /**
      * @return Language
      */
-    public static function getLanguage(): ?Language{
+    public static function getLanguage(): Language{
         return self::$language;
     }
 
@@ -114,7 +114,7 @@ class PowerfulAdsFilter extends PluginBase{
      */
     public function sendAlert(Player $player): void{
         $prefix = $this->getPrefix();
-        $alert = self::getLanguage()->translateString("notice.message");
+        $alert = PowerfulAdsFilter::getLanguage()->translateString("notice.message");
         $colorize = TextFormat::colorize($prefix . $alert);
         $player->sendMessage($colorize);
     }
