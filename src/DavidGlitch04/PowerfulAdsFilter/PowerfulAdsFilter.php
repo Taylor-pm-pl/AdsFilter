@@ -22,6 +22,8 @@ class PowerfulAdsFilter extends PluginBase{
     use SingletonTrait;
     /** @var Config $config */
     private Config $config;
+    /** @var Config $adsString */
+    private Config $adsString;
     /** @var Language $language */
     private static Language $language;
     /** @var array|string[] $languages */
@@ -32,7 +34,7 @@ class PowerfulAdsFilter extends PluginBase{
     ];
 
     /**
-     * @return Language|null
+     * @return Language
      */
     public static function getLanguage(): ?Language{
         return self::$language;
@@ -57,7 +59,7 @@ class PowerfulAdsFilter extends PluginBase{
 
     /**
      * @param string $lang
-     * @param array $languageFiles
+     * @param string[] $languageFiles
      */
     public function initLanguage(string $lang, array $languageFiles): void {
         $path = $this->getDataFolder() . "languages/";
