@@ -54,6 +54,7 @@ class PowerfulAdsFilter extends PluginBase{
         $this->saveDefaultConfig();
         $this->config = $this->getConfig();
         $this->initLanguage(strval($this->config->get("language", "eng")), $this->languages);
+        //var_dump($this->handleMessage("Test play.estellavn.xyz"));
     }
 
     /**
@@ -98,7 +99,7 @@ class PowerfulAdsFilter extends PluginBase{
         if(filter_var(
             $ip,
             FILTER_VALIDATE_IP
-        ) or preg_match('([a-zA-Z0-9]+ *+[(\.|,)]+ *+[^\s]{2,}|\.[a-zA-Z0-9]+\.[^\s]{2,})', $ip)
+        ) or preg_match('/\d+\.\d+\.\d+\.\d+/', $ip)
         ){
             return true;
         } else{
@@ -121,7 +122,7 @@ class PowerfulAdsFilter extends PluginBase{
      * @return string
      */
     public function handleMessage(string $msg): string {
-        $adsstring = "/\d+\.\d+\.\d+\.\d+/";
+        $adsstring = ["/\d+\.\d+\.\d+\.\d+/", "/(([\w.-]*)\.([\w]*))/"];
         $callback = function (string $adsstring): string {
             $character = $this->getCharacterReplaced();
             $search = $adsstring;
