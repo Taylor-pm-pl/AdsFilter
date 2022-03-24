@@ -136,7 +136,7 @@ class PowerfulAdsFilter extends PluginBase{
         $subject = strtolower($msg);
         $filteredMsg = preg_replace((array)$search, $replace, $subject);
         /** @var string $filteredMsg */
-        return (string)$filteredMsg;
+        return $filteredMsg;
     }
 
 
