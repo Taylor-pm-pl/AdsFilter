@@ -117,10 +117,6 @@ class PowerfulAdsFilter extends PluginBase{
         $player->sendMessage($colorize);
     }
 
-    /**
-     * @param string $msg
-     * @return string
-     */
     public function handleMessage(string $msg): string {
         $adsstring = "/\d+\.\d+\.\d+\.\d+/";
         $callback = function (string $adsstring): string {
@@ -133,10 +129,6 @@ class PowerfulAdsFilter extends PluginBase{
         };
         $array = $adsstring;
         $search = $adsstring;
-        /**
-         * @phpstan-ignore-next-line
-         * Parameter #3 $subject of function str_replace expects array|string, mixed given.
-         */
         $replace = array_map($callback, (array)$array);
         $subject = strtolower($msg);
         $filteredMsg = preg_replace((array)$search, $replace, $subject);
