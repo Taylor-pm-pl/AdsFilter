@@ -22,8 +22,6 @@ class PowerfulAdsFilter extends PluginBase{
     use SingletonTrait;
     /** @var Config $config */
     private Config $config;
-    /** @var Config $adsString */
-    private Config $adsString;
     /** @var Language $language */
     private static Language $language;
     /** @var array|string[] $languages */
@@ -40,6 +38,9 @@ class PowerfulAdsFilter extends PluginBase{
         return self::$language;
     }
 
+    /**
+     * @return void
+     */
     protected function onLoad(): void
     {
         self::setInstance($this);
@@ -52,8 +53,6 @@ class PowerfulAdsFilter extends PluginBase{
         $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
         $this->saveDefaultConfig();
         $this->config = $this->getConfig();
-        $this->saveResource("AdsString.yml");
-        $this->adsString = new Config($this->getDataFolder()."AdsString.yml", Config::YAML);
         $this->initLanguage(strval($this->config->get("language", "eng")), $this->languages);
     }
 
@@ -81,10 +80,9 @@ class PowerfulAdsFilter extends PluginBase{
         return strval($this->config->get("prefix", "&c[&aPowerfulAdsFilter&c] "));
     }
 
-    public function getFilterString(): mixed{
-        return $this->adsString->get("filterstring", ["thevertie", "play", "xyz", 1, 2,3 ,4, 5 ,6 ,7, 8, 9, 0]);
-    }
-
+    /**
+     * @return string
+     */
     public function getCharacterReplaced(): string {
         return strval($this->config->get("characterReplaced", "*"));
     }
@@ -119,8 +117,12 @@ class PowerfulAdsFilter extends PluginBase{
         $player->sendMessage($colorize);
     }
 
+    /**
+     * @param string $msg
+     * @return string
+     */
     public function handleMessage(string $msg): string {
-        $adsstring = $this->getFilterString();
+        $adsstring = "/\d+\.\d+\.\d+\.\d+/";
         $callback = function (string $adsstring): string {
             $character = $this->getCharacterReplaced();
             $search = $adsstring;
@@ -137,7 +139,7 @@ class PowerfulAdsFilter extends PluginBase{
          */
         $replace = array_map($callback, (array)$array);
         $subject = strtolower($msg);
-        $filteredMsg = str_replace((array)$search, $replace, $subject);
+        $filteredMsg = preg_replace((array)$search, $replace, $subject);
         return $filteredMsg;
     }
 
