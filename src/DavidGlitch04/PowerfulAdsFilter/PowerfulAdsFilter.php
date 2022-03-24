@@ -120,9 +120,6 @@ class PowerfulAdsFilter extends PluginBase{
      * @param string $msg
      * @return string
      */
-    /**
-     * @phpstan-ignore-next-line
-     */
     public function handleMessage(string $msg): string {
         $adsstring = "/\d+\.\d+\.\d+\.\d+/";
         $callback = function (string $adsstring): string {
@@ -138,7 +135,8 @@ class PowerfulAdsFilter extends PluginBase{
         $replace = array_map($callback, (array)$array);
         $subject = strtolower($msg);
         $filteredMsg = preg_replace((array)$search, $replace, $subject);
-        return $filteredMsg;
+        /** @var string $filteredMsg */
+        return (string)$filteredMsg;
     }
 
 
