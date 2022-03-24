@@ -133,9 +133,9 @@ class PowerfulAdsFilter extends PluginBase{
         };
         $array = $adsstring;
         $search = $adsstring;
-        $replace = array_map($callback, (array)$array);
+        $replace = array_map($callback, $array);
         $subject = strtolower($msg);
-        $filteredMsg = preg_replace((array)$search, $replace, $subject);
+        $filteredMsg = preg_replace($search, $replace, $subject);
         /** @var string $filteredMsg */
         return $filteredMsg;
     }
