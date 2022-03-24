@@ -2,6 +2,7 @@ name: PowerfulAdsFilter
 version: 1.0.0-alpha
 api: 4.0.0
 main: DavidGlitch04\PowerfulAdsFilter\PowerfulAdsFilter
+src-namespace-prefix: DavidGlitch04\PowerfulAdsFilter
 website: https://github.com/DavidGlitch04
 load: STARTUP
 author: DavidGlitch04
