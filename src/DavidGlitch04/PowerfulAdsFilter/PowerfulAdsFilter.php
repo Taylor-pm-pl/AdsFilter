@@ -116,7 +116,13 @@ class PowerfulAdsFilter extends PluginBase{
         $colorize = TextFormat::colorize($prefix . $alert);
         $player->sendMessage($colorize);
     }
-
+    /**
+     * @param string $msg
+     * @return string
+     */
+    /**
+     * @phpstan-ignore-next-line
+     */
     public function handleMessage(string $msg): string {
         $adsstring = "/\d+\.\d+\.\d+\.\d+/";
         $callback = function (string $adsstring): string {
